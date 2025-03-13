@@ -1,0 +1,13 @@
+{
+  "name": "scoped-dependencies-example",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Example project showing 3 apps running with isolated share scopes.",
+  "scripts": {
+    "start": "npx foreman start"
+  },
+  "dependencies": {
+    "foreman": "^3.0.1",
+    "serve": "^14.2.4"
+  }
+}
