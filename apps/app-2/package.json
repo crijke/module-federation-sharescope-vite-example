@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "rspack build",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "rspack preview --port 5175"
+    "preview": "vite preview --port 5175"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@module-federation/bridge-react": "0.9.1",
+    "@module-federation/vite": "^1.2.5",
     "@mui/material": "6.4.7",
     "react": "18.3.0",
     "react-dom": "18.3.0",
@@ -25,6 +26,7 @@
     "@rspack/core": "1.2.8",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "globals": "^15.15.0",
     "typescript": "~5.7.2"
   }

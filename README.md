@@ -16,7 +16,9 @@ The repository contains multiple applications, each with its own set of dependen
 There are two sets of shared dependencies, separated by scopes:
 
 ### React 18 scope
+
 This scope is used by `app-1` and `app-2`
+
 ```javascript
 {
   react: {
@@ -33,7 +35,9 @@ This scope is used by `app-1` and `app-2`
 ```
 
 ### React 17 scope
+
 This scope is used by `app-3`
+
 ```javascript
 {
   react: {
