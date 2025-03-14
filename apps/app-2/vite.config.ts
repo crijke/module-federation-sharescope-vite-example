@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "app1",
+      name: "app2",
       exposes: {
         "./export-app": "./src/export-app.tsx",
       },
@@ -32,7 +32,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/app-1",
+  base: "/app-2",
   build: {
     target: "esnext",
     minify: false,
