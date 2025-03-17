@@ -7,9 +7,9 @@ This repository demonstrates that remote apps with the same scoped dependencies 
 The repository contains multiple applications, each with its own set of dependencies:
 
 - `shell`
-- `app-1` (React 18)
-- `app-2` (React 18)
-- `app-3` (React 17)
+- `app-1`
+- `app-2`
+- `app-3`
 
 ## Shared Dependencies
 
