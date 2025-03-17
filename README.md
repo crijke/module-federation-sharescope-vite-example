@@ -4,83 +4,57 @@ This repository demonstrates that remote apps with the same scoped dependencies 
 
 ## Project Structure
 
-The repository contains multiple applications, each with its own set of dependencies:
+The repository contains an app shell and 3 apps running inside the app shell:
 
 - `shell`
-- `app-1`
-- `app-2`
-- `app-3`
+- `app-1` (React 18.3.0, @mui/material 6.1.0, share scope: "react@18.3.0")
+- `app-2` (React 18.3.0, @mui/material 6.4.7, share scope: "react@18.3.0")
+- `app-3` (React 18.3.1, @mui/material 6.4.7, share scope: "react@18.3.1")
 
-## Shared Dependencies
+## how to run
 
-There are two sets of shared dependencies, separated by scopes:
+- ensure node and npm is installed
+- run npm start in the root folder. this will build an run all the apps
+- open the app shell at http://localhost:5173/
 
-### React 18 scope
+## Shared Dependency Configuration
 
-This scope is used by `app-1` and `app-2`
+There are two different share scopes, "react@18.3.0", "react@18.3.1", and shared dependencies "react", "react-dom",
+and "@mui/material".
 
-```javascript
-{
-  react: {
-    singleton: true,
-    requiredVersion: "^18.3.0",
-    shareScope: "react18",
-  },
-  "react-dom": {
-    singleton: true,
-    requiredVersion: "^18.3.0",
-    shareScope: "react18",
-  },
-}
+```
+| App   | Dependency      | Singleton | Required Version | Share Scope    |
+|-------|-----------------|-----------|------------------|----------------|
+| app-1 | react           | true      | 18.3.0           | react@18.3.0   |
+|       | react-dom       | true      | 18.3.0           |                |
+|       | @mui/material   | true      | 6.1.0            |                |
+| app-2 | react           | true      | 18.3.0           | react@18.3.0   |
+|       | react-dom       | true      | 18.3.0           |                |
+|       | @mui/material   | true      | 6.4.7            |                |
+| app-3 | react           | true      | 18.3.1           | react@18.3.1   |
+|       | react-dom       | true      | 18.3.1           |                |
+|       | @mui/material   | true      | 6.1.0            |                |
 ```
 
-### React 17 scope
+## Expectations: 
 
-This scope is used by `app-3`
-
-```javascript
-{
-  react: {
-    singleton: true,
-    requiredVersion: "^17.0.2",
-    shareScope: "react17",
-  },
-  "react-dom": {
-    singleton: true,
-    requiredVersion: "^17.0.2",
-    shareScope: "react17",
-  },
-}
+```
+  - scope react@18.3.0
+    - app 1 
+    - app 2
+      - react 18.3.0
+      - @mui/material 6.4.7
+  - scope react@18.3.1
+    - app 3
+      - react 18.3.1
+      - @mui/material 6.1.0
 ```
 
-## The Problem
+1) react and react-dom dependencies are shared between app-1 and app-2 (same share scope, singleton: true, same version)
+2) react versions are not shared between share scopes, even though react and react-dom dependencies are defined as singletons
+3) @mui/material dependency is shared between app-1 and app-2 (same share scope, singleton: true, highest version will be used)
+4) app-3 uses @mui/material 6.1.0 and should not be upgraded to @mui/material 6.4.7 (because app-3 has its own share scope)
 
-When a shared dependency is scoped, it is not shared between apps that use the same scope. Let's compare navigation from App A to App B.
 
-## shared React + React DOM dependencies (no scope) ✅
-
-When navigating from `app-1` to `app-2`, three requests are made (in total 268 KB):
-![shared React + React DOM dependencies (no scope)](./resources/no-scope-1.png)
-
-Both apps share the same loading promise of the React and React DOM dependencies:
-![shared React + React DOM dependencies (no scope)](./resources/no-scope-2.png)
-
-## shared React 18 + React DOM 18 dependencies (with scope) ❌
-
-When navigating from `app-1` to `app-2`, more requests are made and the amount of the transferred data is increased:
-![shared React 18 + React DOM 18 dependencies (with scope)](./resources/scope-1.png)
-
-Both apps do not share the same loading promise:
-![shared React 18 + React DOM 18 dependencies (with scope)](./resources/scope-2.png)
-
-## How to Run the Example Apps
-
-Run the following commands in each app directory (`shell`, `app-1`, `app-2`, `app-3`):
-
-```sh
-npm install
-npm run build
-npm run preview
-```
-
-Navigate to `http://localhost:5173/` in your browser.
+These expectations are met with the rspack configuration. A runnable version of the rspack configuration is in branch `rspack`. 
+Ths rspack configuration is also included in the main branch for reference. 

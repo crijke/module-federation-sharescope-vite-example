@@ -51,10 +51,6 @@ module.exports = {
       exposes: {
         "./export-app": "./src/export-app.tsx",
       },
-      experiments: {
-        federationRuntime: "hoisted",
-        asyncStartup: true,
-      },
       manifest: true,
       shareScope: "react@18.3.1",
       shared: {
@@ -69,8 +65,8 @@ module.exports = {
           shareScope: "react@18.3.1",
         },
         "@mui/material": {
-          singleton: false,
-          requiredVersion: "6.4.7",
+          singleton: true,
+          requiredVersion: "6.1.0",
           shareScope: "react@18.3.1",
         },
       },
