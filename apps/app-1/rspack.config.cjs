@@ -67,7 +67,7 @@ module.exports = {
           shareScope: "react@18.3.0",
         },
         "@mui/material": {
-          singleton: true,
+          singleton: false,
           requiredVersion: "6.1.0",
           shareScope: "react@18.3.0",
         },
