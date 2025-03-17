@@ -47,15 +47,14 @@ These expectations are met with the rspack configuration. A runnable version of 
 with the vite plugin the expectations are not met:
 
 - react is shared across share scopes, all apps run with react 18.3.1
-- @mui/material is being upgraded to highest version across all share scopes, all apps use 6.47
 
 ![vite-plugin-issue.png](img/vite-plugin-issue.png)
 
-```
-window.__FEDERATION__.__SHARE__.app1['react@18.3.0'].react['18.3.0'].loading ===  window.__FEDERATION__.__SHARE__.app2['react@18.3.0'].react['18.3.0'].loading
-```
 
+After changing the vite plugin build as described in: https://github.com/module-federation/vite/pull/275
 
-After changing the vite plugin build are described in: https://github.com/module-federation/vite/pull/275
+![vite-plugin-fix.png](img/vite-plugin-fix.png)
+
+- react is only shared within share scopes
 
 
