@@ -21,8 +21,7 @@ The repository contains an app shell and three apps running inside the app shell
 ## Shared Dependency Configuration
 
 There are two different share scopes: `react@18.3.0` and `react@18.3.1`. Shared dependencies include `react`,
-`react-dom`,
-and `@mui/material`, all configured as singletons.
+`react-dom` and `@mui/material`.
 
 | App   | react  | react-dom | @mui/material | Share Scope  |
 |-------|--------|-----------|---------------|--------------|
