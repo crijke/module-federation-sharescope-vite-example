@@ -41,19 +41,20 @@ These expectations are met with the rspack configuration. A runnable version of 
 `rspack` branch. The rspack configuration is also included in the main branch for reference.
 
 
-## Vite Plugin issues:
+## Vite Plugin 1.2.5 issues:
 
-with the vite plugin the expectations are not met:
+with the vite plugin 1.2.5 the expectations are not met (see branch fix/missing-share-scope)
 
 - react is shared across share scopes, all apps run with react 18.3.1
 
 ![vite-plugin-issue.png](img/vite-plugin-issue.png)
-
 
 After changing the vite plugin build as described in: https://github.com/module-federation/vite/pull/275
 
 ![vite-plugin-fix.png](img/vite-plugin-fix.png)
 
 - react is only shared within share scopes
+
+This has been fixed in version 1.2.6
 
 
