@@ -12,7 +12,6 @@ export default defineConfig({
         "./export-app": "./src/export-app.tsx",
       },
       filename: "remoteEntry.js",
-      shareScope: "react@18.3.1",
       shared: {
         react: {
           singleton: true,

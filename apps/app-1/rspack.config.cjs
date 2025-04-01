@@ -54,7 +54,6 @@ module.exports = {
         "./export-app": "./src/export-app.tsx",
       },
       manifest: true,
-      shareScope: "react@18.3.0",
       shared: {
         react: {
           singleton: true,
