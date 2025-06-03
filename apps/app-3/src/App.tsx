@@ -3,6 +3,7 @@ import { Suspense, lazy, useState } from "react";
 
 // Import the SharedButton from app-1 as a remote module
 const SharedButton = lazy(() => import("app1/SharedButton"));
+// const SharedButton = lazy(() => import("app1/SharedHtmlButton"));
 
 function App() {
   const [clickCount, setClickCount] = useState(0);
@@ -22,7 +23,7 @@ function App() {
       <div>
         <h3>Remote Button from App-1:</h3>
         <Suspense fallback={<div>Loading shared button...</div>}>
-          <SharedButton onClick={handleSharedButtonClick} variant="outlined">
+          <SharedButton onClick={handleSharedButtonClick}>
             Clicked {clickCount} times
           </SharedButton>
         </Suspense>
