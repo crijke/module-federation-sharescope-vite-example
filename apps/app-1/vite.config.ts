@@ -10,24 +10,23 @@ export default defineConfig({
       name: "app1",
       exposes: {
         "./export-app": "./src/export-app.tsx",
+        "./SharedButton": "./src/SharedButton.tsx",
       },
       filename: "remoteEntry.js",
       shared: {
         react: {
           singleton: true,
-          requiredVersion: "18.3.0",
-          shareScope: "react@18.3.0",
+          requiredVersion: "^18.2.0",
         },
         "react-dom": {
           singleton: true,
-          requiredVersion: "18.3.0",
-          shareScope: "react@18.3.0",
+          requiredVersion: "^18.2.0",
         },
-        "@mui/material": {
-          singleton: false,
-          requiredVersion: "6.1.0",
-          shareScope: "react@18.3.0",
-        },
+        // "@mui/material": {
+        //   singleton: false,
+        //   requiredVersion: "6.1.0",
+        //   shareScope: "react@18.3.0",
+        // },
       },
     }),
   ],

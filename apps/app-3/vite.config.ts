@@ -8,6 +8,9 @@ export default defineConfig({
     react(),
     federation({
       name: "app3",
+      remotes: {
+        app1: "http://localhost:5174/app-1/remoteEntry.js",
+      },
       exposes: {
         "./export-app": "./src/export-app.tsx",
       },
@@ -15,19 +18,17 @@ export default defineConfig({
       shared: {
         react: {
           singleton: true,
-          requiredVersion: "18.3.1",
-          shareScope: "react@18.3.1",
+          requiredVersion: "^18.2.0",
         },
         "react-dom": {
           singleton: true,
-          requiredVersion: "18.3.1",
-          shareScope: "react@18.3.1",
+          requiredVersion: "^18.2.0",
         },
-        "@mui/material": {
-          singleton: false,
-          requiredVersion: "6.1.0",
-          shareScope: "react@18.3.1",
-        },
+        // "@mui/material": {
+        //   singleton: false,
+        //   requiredVersion: "6.1.0",
+        //   shareScope: "react@18.3.1",
+        // },
       },
     }),
   ],

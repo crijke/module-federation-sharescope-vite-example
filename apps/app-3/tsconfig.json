@@ -20,7 +20,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+
+    /* Module Federation */
+    "baseUrl": ".",
+    "paths": {
+      "app1/*": ["../app-1/src/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "src/types"]
 }
