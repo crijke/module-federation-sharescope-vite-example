@@ -47,12 +47,15 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         app1: {
+          shareScope: "react@18.3.0",
           external: "app1@http://localhost:5174/remoteEntry.js",
         },
         app2: {
+          shareScope: "react@18.3.0",
           external: "app2@http://localhost:5175/remoteEntry.js",
         },
         app3: {
+          shareScope: "react@18.3.1",
           external: "app3@http://localhost:5176/remoteEntry.js",
         },
       },

@@ -13,7 +13,6 @@ export default defineConfig({
       },
       filename: "remoteEntry.js",
       shared: {
-        shareScope: "react@18.3.0",
         react: {
           singleton: true,
           requiredVersion: "18.3.0",
