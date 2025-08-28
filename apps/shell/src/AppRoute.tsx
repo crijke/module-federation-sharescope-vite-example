@@ -7,6 +7,17 @@ import {
 } from "react-router-dom";
 import Shell from "./Shell";
 
+// Example: dynamic runtime loading (unused in current static createRemoteComponent calls)
+// import loadRemoteWithDynamicScope from './dynamicFederationLoader';
+// (async () => {
+//   const remoteApp = await loadRemoteWithDynamicScope({
+//     name: 'app1',
+//     url: 'http://localhost:5174/app-1/remoteEntry.js',
+//     expose: './export-app'
+//   });
+//   console.log('Dynamically loaded app1 root component factory', remoteApp);
+// })();
+
 const App1Component = createRemoteComponent({
   // @ts-ignore
   loader: () => import("app1/export-app"),
