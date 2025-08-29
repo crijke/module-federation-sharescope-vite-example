@@ -8,24 +8,21 @@ export default defineConfig({
     react(),
     federation({
       name: "app3",
+      manifest: true,
       exposes: {
         "./export-app": "./src/export-app.tsx",
-        "./mf-meta": "./src/mf-meta.ts",
       },
       filename: "remoteEntry.js",
       shared: {
         react: {
-          shareScope: "react@18.3.1",
           singleton: true,
           requiredVersion: "18.3.1",
         },
         "react-dom": {
-          shareScope: "react@18.3.1",
           singleton: true,
           requiredVersion: "18.3.1",
         },
         "@mui/material": {
-          shareScope: "react@18.3.1",
           singleton: false,
           requiredVersion: "6.1.0",
         },

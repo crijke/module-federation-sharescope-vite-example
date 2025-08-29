@@ -8,25 +8,21 @@ export default defineConfig({
     react(),
     federation({
       name: "app1",
+      manifest: true,
       exposes: {
         "./export-app": "./src/export-app.tsx",
-        // runtime metadata used by dynamic loader to infer version/scope
-        "./mf-meta": "./src/mf-meta.ts",
       },
       filename: "remoteEntry.js",
       shared: {
         react: {
-          shareScope: "react@18.3.0",
           singleton: true,
           requiredVersion: "18.3.0",
         },
         "react-dom": {
-          shareScope: "react@18.3.0",
           singleton: true,
           requiredVersion: "18.3.0",
         },
         "@mui/material": {
-          shareScope: "react@18.3.0",
           singleton: false,
           requiredVersion: "6.4.7",
         },

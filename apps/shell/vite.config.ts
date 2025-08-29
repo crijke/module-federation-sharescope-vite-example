@@ -13,19 +13,24 @@ export default defineConfig({
     federation({
       name: "shell",
       filename: "remoteEntry.js",
-      runtimePlugins: [path.resolve(__dirname, "./src/runtimePlugins.ts")],
+      runtimePlugins: [
+        path.resolve(__dirname, "./src/dynamicShareScopePlugin.ts"),
+      ],
       remotes: {
         app1: {
+          shareScope: "app1",
           type: "module",
           name: "app1",
           entry: "http://localhost:5174/app-1/remoteEntry.js",
         },
         app2: {
+          shareScope: "app2",
           type: "module",
           name: "app2",
           entry: "http://localhost:5175/app-2/remoteEntry.js",
         },
         app3: {
+          shareScope: "app3",
           type: "module",
           name: "app3",
           entry: "http://localhost:5176/app-3/remoteEntry.js",
