@@ -6,14 +6,17 @@ type AfterResolveArgs = Parameters<
 
 type RemoteSnapshot = NonNullable<AfterResolveArgs["remoteSnapshot"]>;
 
+type SnapshotSharedConfiguration = { sharedName?: string; version?: string };
+
 function dynamicShareScopePlugin(): ModuleFederationRuntimePlugin {
   function deriveShareScopeFromSnapshot(
     snapshot?: RemoteSnapshot
   ): string | null {
-    const snapshotVersion = snapshot?.shared?.find(
-      (s: any) => s.sharedName === "react"
-    )?.version;
-    return snapshotVersion ? `react@${snapshotVersion}` : null;
+    const shared = snapshot?.shared as
+      | SnapshotSharedConfiguration[]
+      | undefined;
+    const version = shared?.find((s) => s.sharedName === "react")?.version;
+    return version ? `react@${version}` : null;
   }
 
   return {
