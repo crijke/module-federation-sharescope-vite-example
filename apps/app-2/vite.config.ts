@@ -29,7 +29,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/app-2",
+  base: "http://localhost:5175/app-2",
   build: {
     target: "esnext",
     minify: false,

@@ -1,37 +1,25 @@
-import { ModuleFederationRuntimePlugin } from "@module-federation/enhanced/runtime";
+import type { ModuleFederationRuntimePlugin } from "@module-federation/enhanced/runtime";
+
+type AfterResolveArgs = Parameters<
+  NonNullable<ModuleFederationRuntimePlugin["afterResolve"]>
+>[0];
+
+type RemoteSnapshot = NonNullable<AfterResolveArgs["remoteSnapshot"]>;
 
 function dynamicShareScopePlugin(): ModuleFederationRuntimePlugin {
-  async function deriveShareScopeFromManifest(
-    entryUrl: string
-  ): Promise<string | null> {
-    try {
-      const manifestUrl = entryUrl.replace(
-        /remoteEntry\.js$/,
-        "mf-manifest.json"
-      );
-
-      const res = await fetch(manifestUrl!, { credentials: "omit" });
-      if (!res.ok) return null;
-      const json = await res.json();
-      const reactVersion = json.shared?.find(
-        (s: any) => s.name === "react"
-      )?.version;
-      if (!reactVersion) {
-        return null;
-      }
-      return `react@${reactVersion}`;
-    } catch {
-      // ignore
-    }
-    return null;
+  function deriveShareScopeFromSnapshot(
+    snapshot?: RemoteSnapshot
+  ): string | null {
+    const snapshotVersion = snapshot?.shared?.find(
+      (s: any) => s.sharedName === "react"
+    )?.version;
+    return snapshotVersion ? `react@${snapshotVersion}` : null;
   }
 
   return {
     name: "DynamicShareScopePlugin",
-    async afterResolve(args) {
-      const shareScope = await deriveShareScopeFromManifest(
-        args.remoteInfo.entry
-      );
+    afterResolve(args: AfterResolveArgs) {
+      const shareScope = deriveShareScopeFromSnapshot(args.remoteSnapshot);
       if (shareScope) {
         args.remote.shareScope = shareScope;
         args.remoteInfo.shareScope = shareScope;
