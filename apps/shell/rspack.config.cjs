@@ -44,16 +44,17 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "shell",
+      dts: { consumeTypes: true },
       filename: "remoteEntry.js",
       remotes: {
         app1: {
-          external: "app1@http://localhost:5174/remoteEntry.js",
+          external: "app1@http://localhost:5174/mf-manifest.json",
         },
         app2: {
-          external: "app2@http://localhost:5175/remoteEntry.js",
+          external: "app2@http://localhost:5175/mf-manifest.json",
         },
         app3: {
-          external: "app3@http://localhost:5176/remoteEntry.js",
+          external: "app3@http://localhost:5176/mf-manifest.json",
         },
       },
     }),

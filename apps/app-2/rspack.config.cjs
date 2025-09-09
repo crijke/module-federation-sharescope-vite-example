@@ -51,6 +51,7 @@ module.exports = {
       exposes: {
         "./export-app": "./src/export-app.tsx",
       },
+      dts: true,
       manifest: true,
       shared: {
         react: {

@@ -47,6 +47,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app1",
+      dts: true,
       library: { type: "window", name: "app1" },
       runtime: false,
       filename: "remoteEntry.js",

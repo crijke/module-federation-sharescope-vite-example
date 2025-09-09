@@ -20,7 +20,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "*": ["./@mf-types/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "./@mf-types/*"]
 }

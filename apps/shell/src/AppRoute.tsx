@@ -8,7 +8,6 @@ import {
 import Shell from "./Shell";
 
 const App1Component = createRemoteComponent({
-  // @ts-ignore
   loader: () => import("app1/export-app"),
   loading: <h1>app-1 loading</h1>,
   fallback: () => <h1>app-1 error</h1>,
