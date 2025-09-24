@@ -1,4 +1,4 @@
-import { createRemoteComponent } from "@module-federation/bridge-react";
+import { loadFederationComponent } from "@lexware/load-federation-component";
 import {
   createBrowserRouter,
   Navigate,
@@ -7,21 +7,21 @@ import {
 } from "react-router-dom";
 import Shell from "./Shell";
 
-const App1Component = createRemoteComponent({
+const App1Component = loadFederationComponent({
   // @ts-ignore
   loader: () => import("app1/export-app"),
   loading: <h1>app-1 loading</h1>,
   fallback: () => <h1>app-1 error</h1>,
 });
 
-const App2Component = createRemoteComponent({
+const App2Component = loadFederationComponent({
   // @ts-ignore
   loader: () => import("app2/export-app"),
   loading: <h1>app-2 loading</h1>,
   fallback: () => <h1>app-2 error</h1>,
 });
 
-const App3Component = createRemoteComponent({
+const App3Component = loadFederationComponent({
   // @ts-ignore
   loader: () => import("app3/export-app"),
   loading: <h1>app-3 loading</h1>,
