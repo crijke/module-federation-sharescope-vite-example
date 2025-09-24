@@ -11,7 +11,6 @@ export default defineConfig({
       exposes: {
         "./export-app": "./src/export-app.tsx",
         "./SharedButton": "./src/components/SharedButton.tsx",
-        "./SharedHtmlButton": "./src/components/SharedHtmlButton.tsx",
       },
       filename: "remoteEntry.js",
       shared: {

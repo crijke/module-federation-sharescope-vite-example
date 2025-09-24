@@ -1,9 +1,11 @@
 import { Button, Stack } from "@mui/material";
-import { Suspense, lazy, useState } from "react";
+import { Suspense, useState } from "react";
+import { loadFederationComponent } from "@lexware/load-federation-component";
 
 // Import the SharedButton from app-1 as a remote module
-const SharedButton = lazy(() => import("app1/SharedButton"));
-// const SharedButton = lazy(() => import("app1/SharedHtmlButton"));
+const SharedButton = loadFederationComponent({
+  loader: () => import("app1/SharedButton"),
+});
 
 function App() {
   const [clickCount, setClickCount] = useState(0);

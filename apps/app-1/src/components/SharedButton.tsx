@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { exposeFederationComponent } from "@lexware/expose-federation-component";
 
 interface SharedButtonProps {
   onClick?: () => void;
@@ -24,4 +25,4 @@ export function SharedButton({
   );
 }
 
-export default SharedButton;
+export default exposeFederationComponent(SharedButton);
