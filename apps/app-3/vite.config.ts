@@ -1,4 +1,4 @@
-import { federation } from "@module-federation/vite";
+import { lexwareApp } from "@lexware/vite-plugin-lexware-app";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -6,29 +6,26 @@ const port = 5176;
 export default defineConfig({
   plugins: [
     react(),
-    federation({
-      name: "app3",
-      remotes: {
-        app1: "http://localhost:5174/app-1/remoteEntry.js",
-      },
-      exposes: {
-        "./export-app": "./src/export-app.tsx",
-      },
-      filename: "remoteEntry.js",
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: "^18.2.0",
+    lexwareApp({
+      federation: {
+        enabled: true,
+        name: "app3",
+        remotes: {
+          app1: {
+            type: "module",
+            name: "app1",
+            entry: "http://localhost:5174/app-1/remoteEntry.js",
+            entryGlobalName: "app1",
+          },
         },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: "^18.2.0",
+        exposes: {
+          "./export-app": "./src/export-app.tsx",
         },
-        // "@mui/material": {
-        //   singleton: false,
-        //   requiredVersion: "6.1.0",
-        //   shareScope: "react@18.3.1",
-        // },
+        dev: {
+          runInAppShell: false,
+          appShellServiceName: "app3",
+        },
+        sharedDependencies: false,
       },
     }),
   ],
