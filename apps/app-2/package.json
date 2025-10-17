@@ -19,7 +19,7 @@
     "react-router-dom": "6.26.1"
   },
   "devDependencies": {
-    "@lexware/vite-plugin-lexware-app": "1.4.0",
+    "@lexware/vite-plugin-lexware-app": "1.5.0",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "^4.3.4",

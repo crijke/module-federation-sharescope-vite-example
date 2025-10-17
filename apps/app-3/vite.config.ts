@@ -14,8 +14,9 @@ export default defineConfig({
           app1: {
             type: "module",
             name: "app1",
-            entry: "http://localhost:5174/app-1/remoteEntry.js",
+            entry: "http://localhost:5174/app-1/mf-manifest.json",
             entryGlobalName: "app1",
+            shareScope: "app1",
           },
         },
         exposes: {
@@ -25,7 +26,7 @@ export default defineConfig({
           runInAppShell: false,
           appShellServiceName: "app3",
         },
-        sharedDependencies: false,
+        sharedDependencies: true,
       },
     }),
   ],

@@ -17,7 +17,7 @@
     "react-router-dom": "^6.29.0"
   },
   "devDependencies": {
-    "@lexware/vite-plugin-lexware-app": "1.4.0",
+    "@lexware/vite-plugin-lexware-app": "1.5.0",
     "@rsbuild/plugin-react": "1.1.1",
     "@rspack/cli": "1.2.8",
     "@rspack/core": "1.2.8",

@@ -17,7 +17,7 @@ export default defineConfig({
           runInAppShell: false,
           appShellServiceName: "app2",
         },
-        sharedDependencies: false,
+        sharedDependencies: true,
       },
     }),
   ],
