@@ -1,4 +1,4 @@
-import { lexwareApp } from "@lexware/vite-plugin-lexware-app";
+import { federation } from "@module-federation/vite";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -6,19 +6,14 @@ const port = 5175;
 export default defineConfig({
   plugins: [
     react(),
-    lexwareApp({
-      federation: {
-        enabled: true,
-        name: "app2",
-        exposes: {
-          "./export-app": "./src/export-app.tsx",
-        },
-        dev: {
-          runInAppShell: false,
-          appShellServiceName: "app2",
-        },
-        sharedDependencies: true,
+    federation({
+      name: "app2",
+      manifest: true,
+      exposes: {
+        "./export-app": "./src/export-app.tsx",
       },
+      shared: ["react", "react-dom"],
+      runtimePlugins: ["../../dynamic-share-scope-plugin.ts"],
     }),
   ],
   base: "/app-2",
