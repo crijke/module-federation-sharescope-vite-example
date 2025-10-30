@@ -1,10 +1,8 @@
-import { createBridgeComponent } from "@module-federation/bridge-react";
+import { exposeFederationComponent } from "@lexware/expose-federation-component";
 import { AppRouter } from "./AppRouter";
 import ReactDOM from "react-dom";
 
 const reactVersion = ReactDOM.version;
 console.log("app-2 React Version: ", reactVersion);
 
-export default createBridgeComponent({
-  rootComponent: () => <AppRouter />,
-});
+export default exposeFederationComponent(AppRouter);

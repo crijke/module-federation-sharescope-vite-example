@@ -11,25 +11,13 @@ export default defineConfig({
       manifest: true,
       exposes: {
         "./export-app": "./src/export-app.tsx",
+        "./SharedButton": "./src/components/SharedButton.tsx",
       },
-      filename: "remoteEntry.js",
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: "18.3.0",
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: "18.3.0",
-        },
-        "@mui/material": {
-          singleton: false,
-          requiredVersion: "6.4.7",
-        },
-      },
+      shared: ["react", "react-dom"],
+      runtimePlugins: ["../../dynamic-share-scope-plugin.ts"],
     }),
   ],
-  base: "http://localhost:5174/app-1",
+  base: "/app-1",
   build: {
     target: "esnext",
     minify: false,
