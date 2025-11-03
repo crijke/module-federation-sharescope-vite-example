@@ -60,14 +60,26 @@ module.exports = {
         react: {
           singleton: true,
           requiredVersion: "18.3.0",
+          shareScope: "react@18.3.0",
+          version: "18.3.0",
         },
         "react-dom": {
           singleton: true,
           requiredVersion: "18.3.0",
+          shareScope: "react@18.3.0",
+          version: "18.3.0",
+        },
+        "react/jsx-runtime": {
+          singleton: true,
+          requiredVersion: "18.3.0",
+          shareScope: "react@18.3.0",
+          version: "18.3.0",
         },
         "@mui/material": {
           singleton: false,
           requiredVersion: "6.1.0",
+          shareScope: "react@18.3.0",
+          version: "6.1.0",
         },
       },
     }),
