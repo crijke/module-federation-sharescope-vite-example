@@ -53,6 +53,7 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         "./export-app": "./src/export-app.tsx",
+        "./SimpleButton": "./src/SimpleButton.tsx",
       },
       manifest: true,
       shared: {

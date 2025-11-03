@@ -48,6 +48,12 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app3",
       filename: "remoteEntry.js",
+      remotes: {
+        app1: {
+          external: "app1@http://localhost:5174/mf-manifest.json",
+          shareScope: "default",
+        },
+      },
       exposes: {
         "./export-app": "./src/export-app.tsx",
       },
