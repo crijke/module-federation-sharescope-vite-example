@@ -1,3 +1,4 @@
+const rspack = require("@rspack/core");
 const {
   ModuleFederationPlugin,
 } = require("@module-federation/enhanced/rspack");
@@ -48,10 +49,11 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app3",
       filename: "remoteEntry.js",
+      shareScope: "react@18.3.1",
       remotes: {
         app1: {
           external: "app1@http://localhost:5174/mf-manifest.json",
-          shareScope: "default",
+          shareScope: "react@18.3.0",
         },
       },
       exposes: {
@@ -60,7 +62,6 @@ module.exports = {
       dts: true,
       manifest: true,
       shared: {
-        shareScope: "react@18.3.1",
         react: {
           singleton: true,
           requiredVersion: "18.3.1",
@@ -71,7 +72,6 @@ module.exports = {
         },
         "@mui/material": {
           singleton: false,
-          requiredVersion: "6.1.0",
         },
       },
     }),

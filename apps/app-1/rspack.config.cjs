@@ -1,4 +1,5 @@
 const path = require("path");
+const rspack = require("@rspack/core");
 const {
   ModuleFederationPlugin,
 } = require("@module-federation/enhanced/rspack");
@@ -48,16 +49,14 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       dts: true,
-      library: { type: "window", name: "app1" },
-      runtime: false,
       filename: "remoteEntry.js",
+      shareScope: "react@18.3.0",
       exposes: {
         "./export-app": "./src/export-app.tsx",
         "./SimpleButton": "./src/SimpleButton.tsx",
       },
       manifest: true,
       shared: {
-        shareScope: "react@18.3.0",
         react: {
           singleton: true,
           requiredVersion: "18.3.0",
