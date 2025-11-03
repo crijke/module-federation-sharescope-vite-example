@@ -20,9 +20,6 @@ module.exports = {
   experiments: {
     css: true,
   },
-  preview: {
-    cors: true,
-  },
   module: {
     rules: [
       {
@@ -57,20 +54,18 @@ module.exports = {
       dts: true,
       manifest: true,
       shared: {
+        shareScope: "react@18.3.0",
         react: {
           singleton: true,
           requiredVersion: "18.3.0",
-          shareScope: "react@18.3.0",
         },
         "react-dom": {
           singleton: true,
           requiredVersion: "18.3.0",
-          shareScope: "react@18.3.0",
         },
         "@mui/material": {
           singleton: false,
           requiredVersion: "6.4.7",
-          shareScope: "react@18.3.0",
         },
       },
     }),

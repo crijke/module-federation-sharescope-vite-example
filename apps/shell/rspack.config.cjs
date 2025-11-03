@@ -17,9 +17,6 @@ module.exports = {
   experiments: {
     css: true,
   },
-  preview: {
-    cors: true,
-  },
   module: {
     rules: [
       {
@@ -52,12 +49,15 @@ module.exports = {
       remotes: {
         app1: {
           external: "app1@http://localhost:5174/mf-manifest.json",
+          shareScope: "react@18.3.0",
         },
         app2: {
           external: "app2@http://localhost:5175/mf-manifest.json",
+          shareScope: "react@18.3.0",
         },
         app3: {
           external: "app3@http://localhost:5176/mf-manifest.json",
+          shareScope: "react@18.3.1",
         },
       },
     }),
