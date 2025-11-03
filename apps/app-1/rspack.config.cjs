@@ -20,6 +20,9 @@ module.exports = {
   experiments: {
     css: true,
   },
+  preview: {
+    cors: true,
+  },
   module: {
     rules: [
       {
