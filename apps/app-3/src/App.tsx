@@ -1,8 +1,12 @@
 import { Button, Stack } from "@mui/material";
-import { lazy, Suspense } from "react";
+import { createRemoteComponent } from "@module-federation/bridge-react";
 
-// Load the SimpleButton component from app-1 as a remote module
-const SimpleButton = lazy(() => import("app1/SimpleButton"));
+// Load the SimpleButton component from app-1 as a remote module using bridge
+const SimpleButton = createRemoteComponent({
+  loader: () => import("app1/SimpleButton"),
+  loading: <div>Loading button from App 1...</div>,
+  fallback: () => <div>Error loading button from App 1</div>,
+});
 
 function App() {
   return (
@@ -12,9 +16,8 @@ function App() {
 
       <div>
         <h2>Remote Button from App 1:</h2>
-        <Suspense fallback={<div>Loading button from App 1...</div>}>
-          <SimpleButton />
-        </Suspense>
+        {/* @ts-expect-error - bridge-react type inference issue */}
+        <SimpleButton />
       </div>
     </Stack>
   );

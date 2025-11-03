@@ -1,4 +1,5 @@
 declare module "app1/SimpleButton" {
-  const SimpleButton: React.ComponentType;
+  import { ComponentType } from "react";
+  const SimpleButton: ComponentType<any>;
   export default SimpleButton;
 }

@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { createBridgeComponent } from "@module-federation/bridge-react";
 
 function SimpleButton() {
   return (
@@ -12,4 +13,6 @@ function SimpleButton() {
   );
 }
 
-export default SimpleButton;
+export default createBridgeComponent({
+  rootComponent: SimpleButton,
+});
