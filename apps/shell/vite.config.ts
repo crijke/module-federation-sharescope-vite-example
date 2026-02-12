@@ -31,7 +31,6 @@ export default defineConfig({
           shareScope: "app3",
         },
       },
-      runtimePlugins: ["../../dynamic-share-scope-plugin.ts"],
     }),
   ],
   base: "/",

@@ -14,7 +14,6 @@ export default defineConfig({
         "./SharedButton": "./src/components/SharedButton.tsx",
       },
       shared: ["react", "react-dom"],
-      runtimePlugins: ["../../dynamic-share-scope-plugin.ts"],
     }),
   ],
   base: "/app-1",
