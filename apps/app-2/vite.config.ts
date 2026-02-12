@@ -13,6 +13,7 @@ export default defineConfig({
         "./export-app": "./src/export-app.tsx",
       },
       shared: ["react", "react-dom"],
+      runtimePlugins: ["../../dynamic-share-scope-plugin.ts"],
     }),
   ],
   base: "/app-2",

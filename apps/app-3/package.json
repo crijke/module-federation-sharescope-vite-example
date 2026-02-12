@@ -12,24 +12,23 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@lexware/expose-federation-component": "1.3.1",
-    "@lexware/load-federation-component": "1.3.1",
+    "@module-federation/bridge-react": "0.9.1",
     "@mui/material": "6.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.1"
   },
   "devDependencies": {
-    "@lexware/vite-plugin-lexware-app": "1.5.0",
+    "@module-federation/enhanced": "^0.10.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.2.1",
     "@module-federation/vite": "1.2.6",
     "@rsbuild/plugin-react": "1.1.1",
     "@rspack/cli": "1.2.8",
     "@rspack/core": "1.2.8",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.0",
-    "@vitejs/plugin-react": "^4.3.4",
     "globals": "^15.15.0",
-    "typescript": "~5.7.2",
-    "vite": "^6.2.1"
+    "typescript": "~5.7.2"
   }
 }

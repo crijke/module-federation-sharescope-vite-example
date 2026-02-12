@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
-import { exposeFederationComponent } from "@lexware/expose-federation-component";
+import { ReactNode } from "react";
 
 interface SharedButtonProps {
   onClick?: () => void;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function SharedButton({
@@ -25,4 +25,4 @@ export function SharedButton({
   );
 }
 
-export default exposeFederationComponent(SharedButton);
+export default SharedButton;
